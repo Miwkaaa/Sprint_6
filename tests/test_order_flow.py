@@ -17,9 +17,6 @@ class TestOrderFlow:
         order_page = OrderPage(driver)
         main_page = MainPage(driver)
         
-        # Принимаем cookies
-        main_page.accept_cookies()
-        
         # Кликаем на кнопку заказа в хедере
         header_page.click_order_button()
         
@@ -38,9 +35,6 @@ class TestOrderFlow:
     def test_order_scooter_from_main_page(self, driver):
         main_page = MainPage(driver)
         order_page = OrderPage(driver)
-        
-        # Принимаем cookies
-        main_page.accept_cookies()
         
         # Скроллим и кликаем на кнопку заказа на главной странице
         main_page.scroll_and_click_order_button()

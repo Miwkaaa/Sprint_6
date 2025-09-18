@@ -84,18 +84,6 @@ class OrderPage(BasePage):
         # Ждем и принудительно закрываем календарь
         self.wait_for_page_ready(5)
         
-        # Принудительно закрываем календарь через JavaScript
-        try:
-            # Пробуем закрыть календарь через Escape
-            self.blur_element_by_placeholder("Когда привезти")
-            self.wait_for_page_ready(2)
-
-            # Пробуем найти и закрыть react-datepicker__tab-loop
-            self.hide_element_by_class("react-datepicker__tab-loop")
-            self.wait_for_page_ready(2)
-            
-        except WebDriverException:
-            pass
         
         # Теперь кликаем на следующее поле (Срок аренды)
         try:

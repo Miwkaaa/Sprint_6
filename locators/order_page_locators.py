@@ -16,7 +16,7 @@ class OrderPageLocators:
 
     # Поля второй страницы формы заказа
     deliver_order_field = (By.XPATH, "//input[@placeholder='* Когда привезти самокат']")
-    rent_period_field = (By.XPATH, "//div[@class='Dropdown-placeholder']")
+    rent_period_field = (By.XPATH, ".//span[@class='Dropdown-arrow']")
     rent_period_one_day = (By.XPATH, "//div[@class='Dropdown-option' and contains(text(), 'сутки')]")
     black_color_scooter_check = (By.ID, 'black')
     comment_field = (By.XPATH, "//input[@placeholder='Комментарий для курьера']")

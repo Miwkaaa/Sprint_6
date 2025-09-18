@@ -44,11 +44,7 @@ class BasePage:
         Клик по элементу с fallback на JavaScript
         """
         element = self.find_and_wait_locator(locator)
-        try:
-            element.click()
-        except (ElementClickInterceptedException, ElementNotInteractableException, StaleElementReferenceException):
-            # Если обычный клик не работает, используем JavaScript
-            self.driver.execute_script("arguments[0].click();", element)
+        element.click()
 
     def send_keys_to_field(self, locator, text):
         """
@@ -82,7 +78,7 @@ class BasePage:
 
     def go_to_new_tab(self):
         """
-        Переключение на новую вкладку
+        Переключение на вторую вкладку)))
         """
         self.driver.switch_to.window(self.driver.window_handles[1])
 
@@ -113,13 +109,6 @@ class BasePage:
         Выполнение JavaScript скрипта
         """
         return self.driver.execute_script(script)
-
-    def blur_element_by_placeholder(self, placeholder_text):
-        """
-        Убираем фокус с элемента по placeholder
-        """
-        script = f'document.querySelector("input[placeholder*=\\"{placeholder_text}\\"]").blur();'
-        self.execute_js_script(script)
 
     def hide_element_by_class(self, class_name):
         """

@@ -10,7 +10,6 @@ class TestFAQ:
     @allure.description('Проверяем, что на странице отображается 8 вопросов FAQ')
     def test_faq_questions_count(self, driver):
         main_page = MainPage(driver)
-        main_page.accept_cookies()
         questions_count = main_page.get_faq_questions_count()
         assert questions_count == 8, f"Ожидаемый результат: 8 вопросов, фактический: {questions_count}"
 
@@ -18,7 +17,6 @@ class TestFAQ:
     @allure.description('Проверяем, что раздел "Вопросы о важном" отображается на странице')
     def test_faq_section_visible(self, driver):
         main_page = MainPage(driver)
-        main_page.accept_cookies()
         assert main_page.is_faq_section_visible(), "Раздел FAQ не отображается"
 
     @pytest.mark.parametrize("question_index,expected_answer", 
@@ -28,7 +26,6 @@ class TestFAQ:
     @allure.description('Проверяем, что при клике на каждый вопрос отображается соответствующий ответ')
     def test_faq_answers(self, driver, question_index, expected_answer):
         main_page = MainPage(driver)
-        main_page.accept_cookies()
         
         # Получаем текст ответа
         actual_answer = main_page.get_faq_answer_text(question_index)

@@ -12,9 +12,6 @@ class TestLogos:
         header_page = HeaderPage(driver)
         main_page = MainPage(driver)
         
-        # Принимаем cookies
-        main_page.accept_cookies()
-        
         # Запоминаем текущий URL
         initial_url = main_page.get_current_url()
         
@@ -30,9 +27,6 @@ class TestLogos:
     def test_yandex_logo_redirect(self, driver):
         header_page = HeaderPage(driver)
         main_page = MainPage(driver)
-        
-        # Принимаем cookies
-        main_page.accept_cookies()
         
         # Запоминаем количество окон до клика
         initial_windows_count = main_page.get_windows_count()
@@ -58,7 +52,7 @@ class TestLogos:
         
         # Проверяем URL новой вкладки
         current_url = main_page.get_current_url()
-        assert "dzen.ru" in current_url or "yandex.ru" in current_url, \
+        assert "dzen.ru" in current_url, \
             f"Новая вкладка не содержит ожидаемый URL: {current_url}"
         
         # Проверяем заголовок страницы
@@ -75,9 +69,6 @@ class TestLogos:
         main_page = MainPage(driver)
         order_page = OrderPage(driver)
         
-        # Принимаем cookies
-        main_page.accept_cookies()
-        
         # Переходим на страницу заказа
         main_page.scroll_and_click_order_button()
         
@@ -93,9 +84,6 @@ class TestLogos:
     def test_logos_attributes(self, driver):
         header_page = HeaderPage(driver)
         main_page = MainPage(driver)
-        
-        # Принимаем cookies
-        main_page.accept_cookies()
         
         # Проверяем, что логотипы являются ссылками
         assert header_page.is_logo_link('scooter'), "Логотип Самоката не является ссылкой"
