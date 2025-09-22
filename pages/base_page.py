@@ -76,11 +76,13 @@ class BasePage:
             lambda driver: driver.execute_script("return document.readyState") == "complete"
         )
 
-    def go_to_new_tab(self):
-        """
-        Переключение на вторую вкладку)))
-        """
-        self.driver.switch_to.window(self.driver.window_handles[1])
+    def switch_to_new_tab(self, initial_windows_count=None, timeout=10):
+        """Переключение на новую вкладку (последнюю открытую)"""
+        if initial_windows_count is not None:
+            self.wait_for_new_window(initial_windows_count, timeout)
+    
+    # Переключаемся на последнюю вкладку
+        self.driver.switch_to.window(self.driver.window_handles[-1])
 
     def check_element(self, locator):
         """

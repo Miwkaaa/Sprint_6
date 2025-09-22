@@ -42,7 +42,7 @@ class TestLogos:
         assert new_windows_count > initial_windows_count, "Новая вкладка не открылась"
         
         # Переключаемся на новую вкладку
-        header_page.go_to_new_tab()
+        header_page.switch_to_new_tab(initial_windows_count)
         
         # Ждем загрузки страницы в новой вкладке
         main_page.wait_for_page_ready(10)
